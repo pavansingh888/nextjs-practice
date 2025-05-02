@@ -1,12 +1,27 @@
+import Link from "next/link";
+
 export default function ProductList() {
+  const productId = 100;
   return (
-    <div>
-      <h1>Product List</h1>
-      <ul>
-        <li>Product 1</li>
-        <li>Product 2</li>
-        <li>Product 3</li>
-      </ul>
-    </div>
+    <>
+    <Link href="/">Home</Link>
+    <h1>Product List</h1>
+    <h2>
+      <Link href="products/1">Product 1</Link>
+    </h2>
+    <h2>
+      <Link href="products/2">Product 2</Link>
+    </h2>
+    <h2>
+      {/* "replace: prop of Link component - it changes how navigation history works - Overrides the current history entry instead of adding a new one.
+      when hit back from here, it takes straight to the home page rather than the previous page */}
+      <Link href="products/3" replace> 
+        Product 3
+      </Link>
+    </h2>
+    <h2>
+      <Link href={`products/${productId}`}>Product {productId}</Link>
+    </h2>
+  </>
   );
 }
